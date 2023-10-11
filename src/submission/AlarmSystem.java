@@ -71,16 +71,32 @@ public class AlarmSystem {
 
 
     public void simulateMovement() {
-        MotionList randomMotionAreaOfDetection = getRandomMotionArea();
+        MotionList poolAreaOfDetection = null;
+
+        for (MotionList motion : motions) {
+            if ("PoolArea".equals(motion.getAreaOfDetection())) {
+                poolAreaOfDetection = motion;
+                break;
+            }
+        }
+
+        if (poolAreaOfDetection == null) {
+            System.out.println("Pool area not found.");
+            return;
+        }
+
         if (!isActive) {
             System.out.println("Alarm system is not active. Activate the system first.");
             return;
         }
-        System.out.println("Simulating movement in " + randomMotionAreaOfDetection.getAreaOfDetection());
-        if (randomMotionAreaOfDetection.triggerDetectors()) {
-            System.out.println("Motion detected in " + randomMotionAreaOfDetection.getAreaOfDetection());
+        System.out.println("Simulating movement in " + poolAreaOfDetection.getAreaOfDetection());
+        if (poolAreaOfDetection.triggerDetectors()) {
+            System.out.println("Motion detected and siren activated in " + poolAreaOfDetection.getAreaOfDetection());
+        } else {
+            System.out.println("No motion detected in " + poolAreaOfDetection.getAreaOfDetection());
         }
     }
+
 
 
     public void resetSystem() {
