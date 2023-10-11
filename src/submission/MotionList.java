@@ -19,9 +19,6 @@ public class MotionList {
         System.out.println("Siren Activated");
     }
 
-    public void sprinklerON() {
-        System.out.println("Sprinkler Activated");
-    }
 
     public boolean triggerDetectors() {
         boolean motionDetected = false;
