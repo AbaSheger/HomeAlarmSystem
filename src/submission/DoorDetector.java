@@ -1,46 +1,46 @@
 package submission;
 
-// Door Detector Implementation
+import java.util.Random;
+
 public class DoorDetector implements Detector {
     private boolean isActive = false;
     private boolean isDetecting = false;
 
     @Override
-    public void activate() {  // activate the Door detector
+    public void activate() {
         isActive = true;
-
     }
 
     @Override
-    public void deactivate() {  // deactivate the Door detector
+    public void deactivate() {
         isActive = false;
-        //System.out.println("Alarm Deactivated");
     }
 
     @Override
-    public boolean isActive() {  // return the current active status
+    public boolean isActive() {
         return isActive;
     }
 
-    public boolean detect() {  // return the current detection status
+    @Override
+    public boolean detect() {
+        Random random = new Random();
+        isDetecting = random.nextBoolean();
         return isDetecting;
     }
 
     @Override
-    public void trigger() {  // Simulate Burglery through Door
-        System.out.println("door broken or opened, burglary detected");
+    public void trigger() {
+        System.out.println("Door broken or opened, burglary detected!");
     }
 
-    public String getStatus() {  // report whether burglary is detected or not
-        if (isActive && isDetecting) {
-            return "door broken or opened, burglary detected";
-        } else {
-            return "no Suspicious activity at the door";
-        }
+
+    @Override
+    public void reset() {
+        deactivate();
     }
 
     @Override
-    public String getDetectorType() {  // return the string type of the Detector type
+    public String getDetectorType() {
         return "DoorDetector";
     }
 }

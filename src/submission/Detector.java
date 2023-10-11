@@ -6,8 +6,8 @@ public interface Detector {
     void deactivate();
     boolean isActive();
     boolean detect();
-    String getStatus();
     String getDetectorType();
+    void reset();
 
 
 }

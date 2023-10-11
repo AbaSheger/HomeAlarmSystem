@@ -1,18 +1,20 @@
 
 package submission;
 
+import java.util.Random;
+
 public class WindowDetector implements Detector {
     private boolean isActive = false;
     private boolean isDetecting = false;
 
     @Override
-    public void activate() {  // activate the Window Detector
+    public void activate() {
         isActive = true;
 
     }
 
     @Override
-    public void deactivate() {  // deactivate the window Detector
+    public void deactivate() {
         isActive = false;
 
     }
@@ -22,24 +24,22 @@ public class WindowDetector implements Detector {
         return isActive;
     }
 
-    public boolean detect() {  // return the current detection status
+    public boolean detect() {
+        Random random = new Random();
+        isDetecting = random.nextBoolean();
         return isDetecting;
     }
 
     @Override
     public void trigger() {  // Simulate Burglery through window
-        System.out.println("window broken or opened, burglary detected");
+        System.out.println("Window broken or opened, burglary detected!");
     }
 
-    public String getStatus() {  // report whether burglary is detected or not
-        if (isActive && isDetecting) {
-            return "window broken or opened, burglary detected";
-        } else {
-            return "no Suspicious activity at the window";
-        }
+    @Override
+    public void reset() {
+        deactivate();
     }
-
-    @Override  // return the string type of the Detector type
+    @Override
     public String getDetectorType() {
         return "WindowDetector";
     }

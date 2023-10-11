@@ -1,11 +1,13 @@
 package submission;
 
+import java.util.Random;
+
 public class MotionDetector implements Detector {
     private boolean isActive = false;
     private boolean isDetecting = false;
 
     @Override
-    public void activate() {  // activate motion detector
+    public void activate() {
         isActive = true;
 
     }
@@ -15,31 +17,28 @@ public class MotionDetector implements Detector {
         isActive = false;
     }
 
-    @Override  // return the current active status
+    @Override
     public boolean isActive() {
         return isActive;
     }
 
-    @Override  // return the current detection status
+    @Override
     public boolean detect() {
+        Random random = new Random();
+        isDetecting = random.nextBoolean();
         return isDetecting;
     }
 
-    @Override  // simulate Movement in the pool(backyard)
+    @Override
     public void trigger() {
-        System.out.println("door broken or opened, burglary detected");
+        System.out.println("Motion Detected");
     }
 
-    @Override  // report whether "Motion Detected" or "No Motion detected"
-    public String getStatus() {
-        if (isActive && isDetecting) {
-            return "Motion detected";
-        } else {
-            return "no movement detected";
-        }
+    @Override
+    public void reset() {
+        deactivate();
     }
-
-    @Override  // return the string type of the detector type
+    @Override
     public String getDetectorType() {
         return "MotionDetector";
     }
