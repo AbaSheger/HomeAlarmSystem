@@ -20,7 +20,7 @@ public class WindowDetector implements Detector {
     }
 
     @Override
-    public boolean isActive() {  // return the current active status of the detector
+    public boolean isActive() {  
         return isActive;
     }
 
@@ -31,7 +31,7 @@ public class WindowDetector implements Detector {
     }
 
     @Override
-    public void trigger() {  // Simulate Burglery through window
+    public void trigger() {  
         System.out.println("Window broken or opened, burglary detected!");
     }
 
