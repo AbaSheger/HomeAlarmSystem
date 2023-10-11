@@ -7,7 +7,7 @@ public class Main {
 
 
         House house = new House();
-
+        Room livingRoom = house.createRoom("Living Room");
         Room kitchen = house.createRoom("Kitchen");
         Room bedroom1 = house.createRoom("Bedroom1");
         Room bedroom2 = house.createRoom("Bedroom2");
@@ -15,15 +15,15 @@ public class Main {
         Room bedroom4 = house.createRoom("Bedroom4");
         Room bedroom5 = house.createRoom("Bedroom5");
         Room garage = house.createRoom("Garage");
+        Room hallway = house.createRoom("hallway");
 
-
-        MotionList livingRoom = house.createAreaForMotion("Living Room");
-        MotionList poolArea = house.createAreaForMotion("PoolArea");
-        MotionList hallway = house.createAreaForMotion("hallway");
+        MotionList livingRoomMotion = house.createAreaForMotion("Living Room");
+        MotionList poolAreaMotion = house.createAreaForMotion("PoolArea");
+        MotionList hallwayMotion = house.createAreaForMotion("hallway");
 
 
         AlarmSystem homeSecurity = new AlarmSystem();
-
+        homeSecurity.addRoom(livingRoom);
         homeSecurity.addRoom(kitchen);
         homeSecurity.addRoom(bedroom1);
         homeSecurity.addRoom(bedroom2);
@@ -31,9 +31,12 @@ public class Main {
         homeSecurity.addRoom(bedroom4);
         homeSecurity.addRoom(bedroom5);
         homeSecurity.addRoom(garage);
-        homeSecurity.addArea(livingRoom);
-        homeSecurity.addArea(poolArea);
-        homeSecurity.addArea(hallway);
+        homeSecurity.addRoom(hallway);
+
+
+        homeSecurity.addArea(livingRoomMotion);
+        homeSecurity.addArea(poolAreaMotion);
+        homeSecurity.addArea(hallwayMotion );
 
 
         Scanner scanner = new Scanner(System.in);
