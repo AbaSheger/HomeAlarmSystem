@@ -39,7 +39,7 @@ public class Main {
         homeSecurity.addArea(hallwayMotion );
 
 
-        Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);  //menu
         while (true) {
             System.out.println("1. Activate Alarm");
             System.out.println("2. Deactivate Alarm");
